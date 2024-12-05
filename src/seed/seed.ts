@@ -44,8 +44,6 @@ export const initialData: SeedData = {
       password: bcryptjs.hashSync('123456'),
       role: 'user'
     },
-
-
   ],
 
   categories: [
