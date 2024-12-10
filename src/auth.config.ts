@@ -35,6 +35,9 @@ export const authConfig = {
           // Registrar el usuario si el password
           const { password: _, ...rest } = user
 
+          console.log(rest);
+          
+
           return rest
       },
     }),
