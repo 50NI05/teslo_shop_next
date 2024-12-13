@@ -10,8 +10,6 @@ import clsx from 'clsx';
 // import { useRouter } from 'next/navigation';
 
 export const LoginForm = () => {
-
-
   // const router = useRouter();
   const [state, dispatch] = useFormState(authenticate, undefined);
 
@@ -23,10 +21,7 @@ export const LoginForm = () => {
       // router.replace('/');
       window.location.replace('/');
     }
-
   }, [state]);
-
-
 
   return (
     <form action={dispatch} className="flex flex-col">

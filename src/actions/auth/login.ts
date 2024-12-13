@@ -1,8 +1,7 @@
 'use server';
 
-
 import { signIn } from '@/auth.config';
-import { sleep } from '@/utils';
+// import { sleep } from '@/utils';
 
 // ...
 
@@ -11,7 +10,6 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-
     // await sleep(2);
 
     await signIn('credentials', {
@@ -21,21 +19,17 @@ export async function authenticate(
 
     return 'Success';
 
-
   } catch (error) {
-    console.log(error);
+    // if ((error as any).type === 'CredentialsSignin') {
+      return 'CredentialsSignin'
+    // }
 
-    return 'CredentialsSignin'
-
-
+    // return 'UnknowError'
   }
 }
 
-
 export const login = async (email: string, password: string) => {
-
   try {
-
     await signIn('credentials', { email, password })
 
     return { ok: true };
@@ -46,8 +40,5 @@ export const login = async (email: string, password: string) => {
       ok: false,
       message: 'No se pudo iniciar sesión'
     }
-
   }
-
-
 }

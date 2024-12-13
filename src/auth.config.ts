@@ -10,6 +10,34 @@ export const authConfig = {
     signIn: '/auth/login',
     newUser: '/auth/new-account'
   },
+  callbacks: {
+    authorized({auth, request: { nextUrl }}) {
+      // const isLoggedIn = !!auth?.user
+      // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+      
+      // if (isOnDashboard) {
+      //   if (isLoggedIn) {
+      //     return true
+      //   }
+      //   return false
+      // } else if (isLoggedIn) {
+      //   return Response.redirect(new URL('dashboard', nextUrl))
+      // }
+
+      return true
+    },
+    jwt({ token, user }) {
+      if (user) {
+        token.data = user
+      }
+
+      return token
+    },
+    session({ session, token, user }) {
+      session.user = token.data as any
+      return session
+    },
+  },
   providers: [
     Credentials({
       async authorize(credentials) {
@@ -34,10 +62,7 @@ export const authConfig = {
 
           // Registrar el usuario si el password
           const { password: _, ...rest } = user
-
-          console.log(rest);
-          
-
+        
           return rest
       },
     }),
@@ -45,4 +70,4 @@ export const authConfig = {
 } satisfies NextAuthConfig;
 
 
-export const { signIn, signOut, auth } = NextAuth(authConfig)
+export const { signIn, signOut, auth, handlers } = NextAuth(authConfig)
