@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -53,8 +47,10 @@ model Product {
   gender      Gender
 
   // Relaciones
-  category     Category       @relation(fields: [categoryId], references: [id])
-  categoryId   String
+
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId String
+
   ProductImage ProductImage[]
   OrderItem    OrderItem[]
 
@@ -85,8 +81,9 @@ model User {
 }
 
 model Country {
-  id           String         @id
-  name         String
+  id   String @id
+  name String
+
   UserAddress  UserAddress[]
   OrderAddress OrderAddress[]
 }
@@ -109,14 +106,14 @@ model UserAddress {
   userId String @unique
 }
 
-// Orden de Compra
+// Order de compras
 model Order {
   id           String    @id @default(uuid())
   subTotal     Float
   tax          Float
   total        Float
   itemsInOrder Int
-  isPaid       Boolean @default(false)
+  isPaid       Boolean   @default(false)
   paidAt       DateTime?
 
   createdAt DateTime @default(now())
@@ -128,6 +125,8 @@ model Order {
 
   OrderItem    OrderItem[]
   OrderAddress OrderAddress?
+
+  transactionId String?
 }
 
 model OrderItem {

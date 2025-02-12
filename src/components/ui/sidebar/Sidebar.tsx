@@ -70,7 +70,8 @@ export const Sidebar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="/orders"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoTicketOutline size={30} />
@@ -112,7 +113,8 @@ export const Sidebar = () => {
               <div className="w-full h-px bg-gray-200 my-10" />
 
               <Link
-                href="/"
+                href="/admin/products"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoShirtOutline size={30} />
@@ -120,7 +122,8 @@ export const Sidebar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="/admin/orders"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoTicketOutline size={30} />
@@ -128,7 +131,8 @@ export const Sidebar = () => {
               </Link>
 
               <Link
-                href="/"
+                href="/admin/users"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoPeopleOutline size={30} />
